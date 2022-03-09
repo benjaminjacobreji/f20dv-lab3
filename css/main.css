@@ -1,0 +1,23 @@
+.map{
+    background-color: lightblue
+}
+
+.map-country{
+    fill: lightgreen;
+    stroke: black;
+    stroke-width: 0.5;
+}
+
+.map-country:hover {
+  fill: green;
+  stroke: red;
+  stroke-width: 3;
+  opacity: 0.5;
+}
+
+.map-country-selected {
+    fill: gray;
+    stroke: red;
+    stroke-width: 3;
+    opacity: 0.5;
+  }
