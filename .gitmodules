@@ -1,5 +1,0 @@
-[submodule "data/covid-19-data"]
-	path = data/covid-19-data
-	url = https://github.com/owid/covid-19-data.git
-	branch = master
-	shallow = true
