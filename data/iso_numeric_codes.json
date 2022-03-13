@@ -1,998 +1,982 @@
 [
- {
-   "ISO_A3": "AFG",
-   "ISO_Numeric": 4
- },
- {
-   "ISO_A3": "ALB",
-   "ISO_Numeric": 8
- },
- {
-   "ISO_A3": "DZA",
-   "ISO_Numeric": 12
- },
- {
-   "ISO_A3": "ASM",
-   "ISO_Numeric": 16
- },
- {
-   "ISO_A3": "AND",
-   "ISO_Numeric": 20
- },
- {
-   "ISO_A3": "AGO",
-   "ISO_Numeric": 24
- },
- {
-   "ISO_A3": "AIA",
-   "ISO_Numeric": 660
- },
- {
-   "ISO_A3": "ATA",
-   "ISO_Numeric": 10
- },
- {
-   "ISO_A3": "ATG",
-   "ISO_Numeric": 28
- },
- {
-   "ISO_A3": "ARG",
-   "ISO_Numeric": 32
- },
- {
-   "ISO_A3": "ARM",
-   "ISO_Numeric": 51
- },
- {
-   "ISO_A3": "ABW",
-   "ISO_Numeric": 533
- },
- {
-   "ISO_A3": "AUS",
-   "ISO_Numeric": 36
- },
- {
-   "ISO_A3": "AUT",
-   "ISO_Numeric": 40
- },
- {
-   "ISO_A3": "AZE",
-   "ISO_Numeric": 31
- },
- {
-   "ISO_A3": "BHS",
-   "ISO_Numeric": 44
- },
- {
-   "ISO_A3": "BHR",
-   "ISO_Numeric": 48
- },
- {
-   "ISO_A3": "BGD",
-   "ISO_Numeric": 50
- },
- {
-   "ISO_A3": "BRB",
-   "ISO_Numeric": 52
- },
- {
-   "ISO_A3": "BLR",
-   "ISO_Numeric": 112
- },
- {
-   "ISO_A3": "BEL",
-   "ISO_Numeric": 56
- },
- {
-   "ISO_A3": "BLZ",
-   "ISO_Numeric": 84
- },
- {
-   "ISO_A3": "BEN",
-   "ISO_Numeric": 204
- },
- {
-   "ISO_A3": "BMU",
-   "ISO_Numeric": 60
- },
- {
-   "ISO_A3": "BTN",
-   "ISO_Numeric": 64
- },
- {
-   "ISO_A3": "BOL",
-   "ISO_Numeric": 68
- },
- {
-   "ISO_A3": "BES",
-   "ISO_Numeric": 535
- },
- {
-   "ISO_A3": "BIH",
-   "ISO_Numeric": 70
- },
- {
-   "ISO_A3": "BWA",
-   "ISO_Numeric": 72
- },
- {
-   "ISO_A3": "BVT",
-   "ISO_Numeric": 74
- },
- {
-   "ISO_A3": "BRA",
-   "ISO_Numeric": 76
- },
- {
-   "ISO_A3": "IOT",
-   "ISO_Numeric": 86
- },
- {
-   "ISO_A3": "BRN",
-   "ISO_Numeric": 96
- },
- {
-   "ISO_A3": "BGR",
-   "ISO_Numeric": 100
- },
- {
-   "ISO_A3": "BFA",
-   "ISO_Numeric": 854
- },
- {
-   "ISO_A3": "BDI",
-   "ISO_Numeric": 108
- },
- {
-   "ISO_A3": "CPV",
-   "ISO_Numeric": 132
- },
- {
-   "ISO_A3": "KHM",
-   "ISO_Numeric": 116
- },
- {
-   "ISO_A3": "CMR",
-   "ISO_Numeric": 120
- },
- {
-   "ISO_A3": "CAN",
-   "ISO_Numeric": 124
- },
- {
-   "ISO_A3": "CYM",
-   "ISO_Numeric": 136
- },
- {
-   "ISO_A3": "CAF",
-   "ISO_Numeric": 140
- },
- {
-   "ISO_A3": "TCD",
-   "ISO_Numeric": 148
- },
- {
-   "ISO_A3": "CHL",
-   "ISO_Numeric": 152
- },
- {
-   "ISO_A3": "CHN",
-   "ISO_Numeric": 156
- },
- {
-   "ISO_A3": "CXR",
-   "ISO_Numeric": 162
- },
- {
-   "ISO_A3": "CCK",
-   "ISO_Numeric": 166
- },
- {
-   "ISO_A3": "COL",
-   "ISO_Numeric": 170
- },
- {
-   "ISO_A3": "COM",
-   "ISO_Numeric": 174
- },
- {
-   "ISO_A3": "COD",
-   "ISO_Numeric": 180
- },
- {
-   "ISO_A3": "COG",
-   "ISO_Numeric": 178
- },
- {
-   "ISO_A3": "COK",
-   "ISO_Numeric": 184
- },
- {
-   "ISO_A3": "CRI",
-   "ISO_Numeric": 188
- },
- {
-   "ISO_A3": "HRV",
-   "ISO_Numeric": 191
- },
- {
-   "ISO_A3": "CUB",
-   "ISO_Numeric": 192
- },
- {
-   "ISO_A3": "CUW",
-   "ISO_Numeric": 531
- },
- {
-   "ISO_A3": "CYP",
-   "ISO_Numeric": 196
- },
- {
-   "ISO_A3": "CZE",
-   "ISO_Numeric": 203
- },
- {
-   "ISO_A3": "CIV",
-   "ISO_Numeric": 384
- },
- {
-   "ISO_A3": "DNK",
-   "ISO_Numeric": 208
- },
- {
-   "ISO_A3": "DJI",
-   "ISO_Numeric": 262
- },
- {
-   "ISO_A3": "DMA",
-   "ISO_Numeric": 212
- },
- {
-   "ISO_A3": "DOM",
-   "ISO_Numeric": 214
- },
- {
-   "ISO_A3": "ECU",
-   "ISO_Numeric": 218
- },
- {
-   "ISO_A3": "EGY",
-   "ISO_Numeric": 818
- },
- {
-   "ISO_A3": "SLV",
-   "ISO_Numeric": 222
- },
- {
-   "ISO_A3": "GNQ",
-   "ISO_Numeric": 226
- },
- {
-   "ISO_A3": "ERI",
-   "ISO_Numeric": 232
- },
- {
-   "ISO_A3": "EST",
-   "ISO_Numeric": 233
- },
- {
-   "ISO_A3": "SWZ",
-   "ISO_Numeric": 748
- },
- {
-   "ISO_A3": "ETH",
-   "ISO_Numeric": 231
- },
- {
-   "ISO_A3": "FLK",
-   "ISO_Numeric": 238
- },
- {
-   "ISO_A3": "FRO",
-   "ISO_Numeric": 234
- },
- {
-   "ISO_A3": "FJI",
-   "ISO_Numeric": 242
- },
- {
-   "ISO_A3": "FIN",
-   "ISO_Numeric": 246
- },
- {
-   "ISO_A3": "FRA",
-   "ISO_Numeric": 250
- },
- {
-   "ISO_A3": "GUF",
-   "ISO_Numeric": 254
- },
- {
-   "ISO_A3": "PYF",
-   "ISO_Numeric": 258
- },
- {
-   "ISO_A3": "ATF",
-   "ISO_Numeric": 260
- },
- {
-   "ISO_A3": "GAB",
-   "ISO_Numeric": 266
- },
- {
-   "ISO_A3": "GMB",
-   "ISO_Numeric": 270
- },
- {
-   "ISO_A3": "GEO",
-   "ISO_Numeric": 268
- },
- {
-   "ISO_A3": "DEU",
-   "ISO_Numeric": 276
- },
- {
-   "ISO_A3": "GHA",
-   "ISO_Numeric": 288
- },
- {
-   "ISO_A3": "GIB",
-   "ISO_Numeric": 292
- },
- {
-   "ISO_A3": "GRC",
-   "ISO_Numeric": 300
- },
- {
-   "ISO_A3": "GRL",
-   "ISO_Numeric": 304
- },
- {
-   "ISO_A3": "GRD",
-   "ISO_Numeric": 308
- },
- {
-   "ISO_A3": "GLP",
-   "ISO_Numeric": 312
- },
- {
-   "ISO_A3": "GUM",
-   "ISO_Numeric": 316
- },
- {
-   "ISO_A3": "GTM",
-   "ISO_Numeric": 320
- },
- {
-   "ISO_A3": "GGY",
-   "ISO_Numeric": 831
- },
- {
-   "ISO_A3": "GIN",
-   "ISO_Numeric": 324
- },
- {
-   "ISO_A3": "GNB",
-   "ISO_Numeric": 624
- },
- {
-   "ISO_A3": "GUY",
-   "ISO_Numeric": 328
- },
- {
-   "ISO_A3": "HTI",
-   "ISO_Numeric": 332
- },
- {
-   "ISO_A3": "HMD",
-   "ISO_Numeric": 334
- },
- {
-   "ISO_A3": "VAT",
-   "ISO_Numeric": 336
- },
- {
-   "ISO_A3": "HND",
-   "ISO_Numeric": 340
- },
- {
-   "ISO_A3": "HKG",
-   "ISO_Numeric": 344
- },
- {
-   "ISO_A3": "HUN",
-   "ISO_Numeric": 348
- },
- {
-   "ISO_A3": "ISL",
-   "ISO_ISO_Numeric": 352
- },
- {
-   "ISO_A3": "IND",
-   "ISO_Numeric": 356
- },
- {
-   "ISO_A3": "IDN",
-   "ISO_Numeric": 360
- },
- {
-   "ISO_A3": "IRN",
-   "ISO_Numeric": 364
- },
- {
-   "ISO_A3": "IRQ",
-   "ISO_Numeric": 368
- },
- {
-   "ISO_A3": "IRL",
-   "ISO_Numeric": 372
- },
- {
-   "ISO_A3": "IMN",
-   "ISO_Numeric": 833
- },
- {
-   "ISO_A3": "ISR",
-   "ISO_Numeric": 376
- },
- {
-   "ISO_A3": "ITA",
-   "ISO_Numeric": 380
- },
- {
-   "ISO_A3": "JAM",
-   "ISO_Numeric": 388
- },
- {
-   "ISO_A3": "JPN",
-   "ISO_Numeric": 392
- },
- {
-   "ISO_A3": "JEY",
-   "ISO_Numeric": 832
- },
- {
-   "ISO_A3": "JOR",
-   "ISO_Numeric": 400
- },
- {
-   "ISO_A3": "KAZ",
-   "ISO_Numeric": 398
- },
- {
-   "ISO_A3": "KEN",
-   "ISO_Numeric": 404
- },
- {
-   "ISO_A3": "KIR",
-   "ISO_Numeric": 296
- },
- {
-   "ISO_A3": "PRK",
-   "ISO_Numeric": 408
- },
- {
-   "ISO_A3": "KOR",
-   "ISO_Numeric": 410
- },
- {
-   "ISO_A3": "KWT",
-   "ISO_Numeric": 414
- },
- {
-   "ISO_A3": "KGZ",
-   "ISO_Numeric": 417
- },
- {
-   "ISO_A3": "LAO",
-   "ISO_Numeric": 418
- },
- {
-   "ISO_A3": "LVA",
-   "ISO_Numeric": 428
- },
- {
-   "ISO_A3": "LBN",
-   "ISO_Numeric": 422
- },
- {
-   "ISO_A3": "LSO",
-   "ISO_Numeric": 426
- },
- {
-   "ISO_A3": "LBR",
-   "ISO_Numeric": 430
- },
- {
-   "ISO_A3": "LBY",
-   "ISO_Numeric": 434
- },
- {
-   "ISO_A3": "LIE",
-   "ISO_Numeric": 438
- },
- {
-   "ISO_A3": "LTU",
-   "ISO_Numeric": 440
- },
- {
-   "ISO_A3": "LUX",
-   "ISO_Numeric": 442
- },
- {
-   "ISO_A3": "MAC",
-   "ISO_Numeric": 446
- },
- {
-   "ISO_A3": "MDG",
-   "ISO_Numeric": 450
- },
- {
-   "ISO_A3": "MWI",
-   "ISO_Numeric": 454
- },
- {
-   "ISO_A3": "MYS",
-   "ISO_Numeric": 458
- },
- {
-   "ISO_A3": "MDV",
-   "ISO_Numeric": 462
- },
- {
-   "ISO_A3": "MLI",
-   "ISO_Numeric": 466
- },
- {
-   "ISO_A3": "MLT",
-   "ISO_Numeric": 470
- },
- {
-   "ISO_A3": "MHL",
-   "ISO_Numeric": 584
- },
- {
-   "ISO_A3": "MTQ",
-   "ISO_Numeric": 474
- },
- {
-   "ISO_A3": "MRT",
-   "ISO_Numeric": 478
- },
- {
-   "ISO_A3": "MUS",
-   "ISO_Numeric": 480
- },
- {
-   "ISO_A3": "MYT",
-   "ISO_Numeric": 175
- },
- {
-   "ISO_A3": "MEX",
-   "ISO_Numeric": 484
- },
- {
-   "ISO_A3": "FSM",
-   "ISO_Numeric": 583
- },
- {
-   "ISO_A3": "MDA",
-   "ISO_Numeric": 498
- },
- {
-   "ISO_A3": "MCO",
-   "ISO_Numeric": 492
- },
- {
-   "ISO_A3": "MNG",
-   "ISO_Numeric": 496
- },
- {
-   "ISO_A3": "MNE",
-   "ISO_Numeric": 499
- },
- {
-   "ISO_A3": "MSR",
-   "ISO_Numeric": 500
- },
- {
-   "ISO_A3": "MAR",
-   "ISO_Numeric": 504
- },
- {
-   "ISO_A3": "MOZ",
-   "ISO_Numeric": 508
- },
- {
-   "ISO_A3": "MMR",
-   "ISO_Numeric": 104
- },
- {
-   "ISO_A3": "NAM",
-   "ISO_Numeric": 516
- },
- {
-   "ISO_A3": "NRU",
-   "ISO_Numeric": 520
- },
- {
-   "ISO_A3": "NPL",
-   "ISO_Numeric": 524
- },
- {
-   "ISO_A3": "NLD",
-   "ISO_Numeric": 528
- },
- {
-   "ISO_A3": "NCL",
-   "ISO_Numeric": 540
- },
- {
-   "ISO_A3": "NZL",
-   "ISO_Numeric": 554
- },
- {
-   "ISO_A3": "NIC",
-   "ISO_Numeric": 558
- },
- {
-   "ISO_A3": "NER",
-   "ISO_Numeric": 562
- },
- {
-   "ISO_A3": "NGA",
-   "ISO_Numeric": 566
- },
- {
-   "ISO_A3": "NIU",
-   "ISO_Numeric": 570
- },
- {
-   "ISO_A3": "NFK",
-   "ISO_Numeric": 574
- },
- {
-   "ISO_A3": "MNP",
-   "ISO_Numeric": 580
- },
- {
-   "ISO_A3": "NOR",
-   "ISO_Numeric": 578
- },
- {
-   "ISO_A3": "OMN",
-   "ISO_Numeric": 512
- },
- {
-   "ISO_A3": "PAK",
-   "ISO_Numeric": 586
- },
- {
-   "ISO_A3": "PLW",
-   "ISO_Numeric": 585
- },
- {
-   "ISO_A3": "PSE",
-   "ISO_Numeric": 275
- },
- {
-   "ISO_A3": "PAN",
-   "ISO_Numeric": 591
- },
- {
-   "ISO_A3": "PNG",
-   "ISO_Numeric": 598
- },
- {
-   "ISO_A3": "PRY",
-   "ISO_Numeric": 600
- },
- {
-   "ISO_A3": "PER",
-   "ISO_Numeric": 604
- },
- {
-   "ISO_A3": "PHL",
-   "ISO_Numeric": 608
- },
- {
-   "ISO_A3": "PCN",
-   "ISO_Numeric": 612
- },
- {
-   "ISO_A3": "POL",
-   "ISO_Numeric": 616
- },
- {
-   "ISO_A3": "PRT",
-   "ISO_Numeric": 620
- },
- {
-   "ISO_A3": "PRI",
-   "ISO_Numeric": 630
- },
- {
-   "ISO_A3": "QAT",
-   "ISO_Numeric": 634
- },
- {
-   "ISO_A3": "MKD",
-   "ISO_Numeric": 807
- },
- {
-   "ISO_A3": "ROU",
-   "ISO_Numeric": 642
- },
- {
-   "ISO_A3": "RUS",
-   "ISO_Numeric": 643
- },
- {
-   "ISO_A3": "RWA",
-   "ISO_Numeric": 646
- },
- {
-   "ISO_A3": "REU",
-   "ISO_Numeric": 638
- },
- {
-   "ISO_A3": "BLM",
-   "ISO_Numeric": 652
- },
- {
-   "ISO_A3": "SHN",
-   "ISO_Numeric": 654
- },
- {
-   "ISO_A3": "KNA",
-   "ISO_Numeric": 659
- },
- {
-   "ISO_A3": "LCA",
-   "ISO_Numeric": 662
- },
- {
-   "ISO_A3": "MAF",
-   "ISO_Numeric": 663
- },
- {
-   "ISO_A3": "SPM",
-   "ISO_Numeric": 666
- },
- {
-   "ISO_A3": "VCT",
-   "ISO_Numeric": 670
- },
- {
-   "ISO_A3": "WSM",
-   "ISO_Numeric": 882
- },
- {
-   "ISO_A3": "SMR",
-   "ISO_Numeric": 674
- },
- {
-   "ISO_A3": "STP",
-   "ISO_Numeric": 678
- },
- {
-   "ISO_A3": "SAU",
-   "ISO_Numeric": 682
- },
- {
-   "ISO_A3": "SEN",
-   "ISO_Numeric": 686
- },
- {
-   "ISO_A3": "SRB",
-   "ISO_Numeric": 688
- },
- {
-   "ISO_A3": "SYC",
-   "ISO_Numeric": 690
- },
- {
-   "ISO_A3": "SLE",
-   "ISO_Numeric": 694
- },
- {
-   "ISO_A3": "SGP",
-   "ISO_Numeric": 702
- },
- {
-   "ISO_A3": "SXM",
-   "ISO_Numeric": 534
- },
- {
-   "ISO_A3": "SVK",
-   "ISO_Numeric": 703
- },
- {
-   "ISO_A3": "SVN",
-   "ISO_Numeric": 705
- },
- {
-   "ISO_A3": "SLB",
-   "ISO_Numeric": 90
- },
- {
-   "ISO_A3": "SOM",
-   "ISO_Numeric": 706
- },
- {
-   "ISO_A3": "ZAF",
-   "ISO_Numeric": 710
- },
- {
-   "ISO_A3": "SGS",
-   "ISO_Numeric": 239
- },
- {
-   "ISO_A3": "SSD",
-   "ISO_Numeric": 728
- },
- {
-   "ISO_A3": "ESP",
-   "ISO_Numeric": 724
- },
- {
-   "ISO_A3": "LKA",
-   "ISO_Numeric": 144
- },
- {
-   "ISO_A3": "SDN",
-   "ISO_Numeric": 729
- },
- {
-   "ISO_A3": "SUR",
-   "ISO_Numeric": 740
- },
- {
-   "ISO_A3": "SJM",
-   "ISO_Numeric": 744
- },
- {
-   "ISO_A3": "SWE",
-   "ISO_Numeric": 752
- },
- {
-   "ISO_A3": "CHE",
-   "ISO_Numeric": 756
- },
- {
-   "ISO_A3": "SYR",
-   "ISO_Numeric": 760
- },
- {
-   "ISO_A3": "TWN",
-   "ISO_Numeric": 158
- },
- {
-   "ISO_A3": "TJK",
-   "ISO_Numeric": 762
- },
- {
-   "ISO_A3": "TZA",
-   "ISO_Numeric": 834
- },
- {
-   "ISO_A3": "THA",
-   "ISO_Numeric": 764
- },
- {
-   "ISO_A3": "TLS",
-   "ISO_Numeric": 626
- },
- {
-   "ISO_A3": "TGO",
-   "ISO_Numeric": 768
- },
- {
-   "ISO_A3": "TKL",
-   "ISO_Numeric": 772
- },
- {
-   "ISO_A3": "TON",
-   "ISO_Numeric": 776
- },
- {
-   "ISO_A3": "TTO",
-   "ISO_Numeric": 780
- },
- {
-   "ISO_A3": "TUN",
-   "ISO_Numeric": 788
- },
- {
-   "ISO_A3": "TUR",
-   "ISO_Numeric": 792
- },
- {
-   "ISO_A3": "TKM",
-   "ISO_Numeric": 795
- },
- {
-   "ISO_A3": "TCA",
-   "ISO_Numeric": 796
- },
- {
-   "ISO_A3": "TUV",
-   "ISO_Numeric": 798
- },
- {
-   "ISO_A3": "UGA",
-   "ISO_Numeric": 800
- },
- {
-   "ISO_A3": "UKR",
-   "ISO_Numeric": 804
- },
- {
-   "ISO_A3": "ARE",
-   "ISO_Numeric": 784
- },
- {
-   "ISO_A3": "GBR",
-   "ISO_Numeric": 826
- },
- {
-   "ISO_A3": "UMI",
-   "ISO_Numeric": 581
- },
- {
-   "ISO_A3": "USA",
-   "ISO_Numeric": 840
- },
- {
-   "ISO_A3": "URY",
-   "ISO_Numeric": 858
- },
- {
-   "ISO_A3": "UZB",
-   "ISO_Numeric": 860
- },
- {
-   "ISO_A3": "VUT",
-   "ISO_Numeric": 548
- },
- {
-   "ISO_A3": "VEN",
-   "ISO_Numeric": 862
- },
- {
-   "ISO_A3": "VNM",
-   "ISO_Numeric": 704
- },
- {
-   "ISO_A3": "VGB",
-   "ISO_Numeric": 92
- },
- {
-   "ISO_A3": "VIR",
-   "ISO_Numeric": 850
- },
- {
-   "ISO_A3": "WLF",
-   "ISO_Numeric": 876
- },
- {
-   "ISO_A3": "ESH",
-   "ISO_Numeric": 732
- },
- {
-   "ISO_A3": "YEM",
-   "ISO_Numeric": 887
- },
- {
-   "ISO_A3": "ZMB",
-   "ISO_Numeric": 894
- },
- {
-   "ISO_A3": "ZWE",
-   "ISO_Numeric": 716
- },
- {
-   "ISO_A3": "ALA",
-   "ISO_Numeric": 248
- }
-]
+  {
+    "ISO_A3": "AFG",
+    "ISO_Numeric": 4
+  },
+  {
+    "ISO_A3": "ALB",
+    "ISO_Numeric": 8
+  },
+  {
+    "ISO_A3": "DZA",
+    "ISO_Numeric": 12
+  },
+  {
+    "ISO_A3": "ASM",
+    "ISO_Numeric": 16
+  },
+  {
+    "ISO_A3": "AND",
+    "ISO_Numeric": 20
+  },
+  {
+    "ISO_A3": "AGO",
+    "ISO_Numeric": 24
+  },
+  {
+    "ISO_A3": "AIA",
+    "ISO_Numeric": 660
+  },
+  {
+    "ISO_A3": "ATA",
+    "ISO_Numeric": 10
+  },
+  {
+    "ISO_A3": "ATG",
+    "ISO_Numeric": 28
+  },
+  {
+    "ISO_A3": "ARG",
+    "ISO_Numeric": 32
+  },
+  {
+    "ISO_A3": "ARM",
+    "ISO_Numeric": 51
+  },
+  {
+    "ISO_A3": "ABW",
+    "ISO_Numeric": 533
+  },
+  {
+    "ISO_A3": "AUS",
+    "ISO_Numeric": 36
+  },
+  {
+    "ISO_A3": "AUT",
+    "ISO_Numeric": 40
+  },
+  {
+    "ISO_A3": "AZE",
+    "ISO_Numeric": 31
+  },
+  {
+    "ISO_A3": "BHS",
+    "ISO_Numeric": 44
+  },
+  {
+    "ISO_A3": "BHR",
+    "ISO_Numeric": 48
+  },
+  {
+    "ISO_A3": "BGD",
+    "ISO_Numeric": 50
+  },
+  {
+    "ISO_A3": "BRB",
+    "ISO_Numeric": 52
+  },
+  {
+    "ISO_A3": "BLR",
+    "ISO_Numeric": 112
+  },
+  {
+    "ISO_A3": "BEL",
+    "ISO_Numeric": 56
+  },
+  {
+    "ISO_A3": "BLZ",
+    "ISO_Numeric": 84
+  },
+  {
+    "ISO_A3": "BEN",
+    "ISO_Numeric": 204
+  },
+  {
+    "ISO_A3": "BMU",
+    "ISO_Numeric": 60
+  },
+  {
+    "ISO_A3": "BTN",
+    "ISO_Numeric": 64
+  },
+  {
+    "ISO_A3": "BOL",
+    "ISO_Numeric": 68
+  },
+  {
+    "ISO_A3": "BES",
+    "ISO_Numeric": 535
+  },
+  {
+    "ISO_A3": "BIH",
+    "ISO_Numeric": 70
+  },
+  {
+    "ISO_A3": "BWA",
+    "ISO_Numeric": 72
+  },
+  {
+    "ISO_A3": "BVT",
+    "ISO_Numeric": 74
+  },
+  {
+    "ISO_A3": "BRA",
+    "ISO_Numeric": 76
+  },
+  {
+    "ISO_A3": "IOT",
+    "ISO_Numeric": 86
+  },
+  {
+    "ISO_A3": "BRN",
+    "ISO_Numeric": 96
+  },
+  {
+    "ISO_A3": "BGR",
+    "ISO_Numeric": 100
+  },
+  {
+    "ISO_A3": "BFA",
+    "ISO_Numeric": 854
+  },
+  {
+    "ISO_A3": "BDI",
+    "ISO_Numeric": 108
+  },
+  {
+    "ISO_A3": "CPV",
+    "ISO_Numeric": 132
+  },
+  {
+    "ISO_A3": "KHM",
+    "ISO_Numeric": 116
+  },
+  {
+    "ISO_A3": "CMR",
+    "ISO_Numeric": 120
+  },
+  {
+    "ISO_A3": "CAN",
+    "ISO_Numeric": 124
+  },
+  {
+    "ISO_A3": "CYM",
+    "ISO_Numeric": 136
+  },
+  {
+    "ISO_A3": "CAF",
+    "ISO_Numeric": 140
+  },
+  {
+    "ISO_A3": "TCD",
+    "ISO_Numeric": 148
+  },
+  {
+    "ISO_A3": "CHL",
+    "ISO_Numeric": 152
+  },
+  {
+    "ISO_A3": "CHN",
+    "ISO_Numeric": 156
+  },
+  {
+    "ISO_A3": "CXR",
+    "ISO_Numeric": 162
+  },
+  {
+    "ISO_A3": "CCK",
+    "ISO_Numeric": 166
+  },
+  {
+    "ISO_A3": "COL",
+    "ISO_Numeric": 170
+  },
+  {
+    "ISO_A3": "COM",
+    "ISO_Numeric": 174
+  },
+  {
+    "ISO_A3": "COD",
+    "ISO_Numeric": 180
+  },
+  {
+    "ISO_A3": "COG",
+    "ISO_Numeric": 178
+  },
+  {
+    "ISO_A3": "COK",
+    "ISO_Numeric": 184
+  },
+  {
+    "ISO_A3": "CRI",
+    "ISO_Numeric": 188
+  },
+  {
+    "ISO_A3": "HRV",
+    "ISO_Numeric": 191
+  },
+  {
+    "ISO_A3": "CUB",
+    "ISO_Numeric": 192
+  },
+  {
+    "ISO_A3": "CUW",
+    "ISO_Numeric": 531
+  },
+  {
+    "ISO_A3": "CYP",
+    "ISO_Numeric": 196
+  },
+  {
+    "ISO_A3": "CZE",
+    "ISO_Numeric": 203
+  },
+  {
+    "ISO_A3": "CIV",
+    "ISO_Numeric": 384
+  },
+  {
+    "ISO_A3": "DNK",
+    "ISO_Numeric": 208
+  },
+  {
+    "ISO_A3": "DJI",
+    "ISO_Numeric": 262
+  },
+  {
+    "ISO_A3": "DMA",
+    "ISO_Numeric": 212
+  },
+  {
+    "ISO_A3": "DOM",
+    "ISO_Numeric": 214
+  },
+  {
+    "ISO_A3": "ECU",
+    "ISO_Numeric": 218
+  },
+  {
+    "ISO_A3": "EGY",
+    "ISO_Numeric": 818
+  },
+  {
+    "ISO_A3": "SLV",
+    "ISO_Numeric": 222
+  },
+  {
+    "ISO_A3": "GNQ",
+    "ISO_Numeric": 226
+  },
+  {
+    "ISO_A3": "ERI",
+    "ISO_Numeric": 232
+  },
+  {
+    "ISO_A3": "EST",
+    "ISO_Numeric": 233
+  },
+  {
+    "ISO_A3": "SWZ",
+    "ISO_Numeric": 748
+  },
+  {
+    "ISO_A3": "ETH",
+    "ISO_Numeric": 231
+  },
+  {
+    "ISO_A3": "FLK",
+    "ISO_Numeric": 238
+  },
+  {
+    "ISO_A3": "FRO",
+    "ISO_Numeric": 234
+  },
+  {
+    "ISO_A3": "FJI",
+    "ISO_Numeric": 242
+  },
+  {
+    "ISO_A3": "FIN",
+    "ISO_Numeric": 246
+  },
+  {
+    "ISO_A3": "FRA",
+    "ISO_Numeric": 250
+  },
+  {
+    "ISO_A3": "GUF",
+    "ISO_Numeric": 254
+  },
+  {
+    "ISO_A3": "PYF",
+    "ISO_Numeric": 258
+  },
+  {
+    "ISO_A3": "GAB",
+    "ISO_Numeric": 266
+  },
+  {
+    "ISO_A3": "GMB",
+    "ISO_Numeric": 270
+  },
+  {
+    "ISO_A3": "GEO",
+    "ISO_Numeric": 268
+  },
+  {
+    "ISO_A3": "DEU",
+    "ISO_Numeric": 276
+  },
+  {
+    "ISO_A3": "GHA",
+    "ISO_Numeric": 288
+  },
+  {
+    "ISO_A3": "GIB",
+    "ISO_Numeric": 292
+  },
+  {
+    "ISO_A3": "GRC",
+    "ISO_Numeric": 300
+  },
+  {
+    "ISO_A3": "GRL",
+    "ISO_Numeric": 304
+  },
+  {
+    "ISO_A3": "GRD",
+    "ISO_Numeric": 308
+  },
+  {
+    "ISO_A3": "GLP",
+    "ISO_Numeric": 312
+  },
+  {
+    "ISO_A3": "GUM",
+    "ISO_Numeric": 316
+  },
+  {
+    "ISO_A3": "GTM",
+    "ISO_Numeric": 320
+  },
+  {
+    "ISO_A3": "GGY",
+    "ISO_Numeric": 831
+  },
+  {
+    "ISO_A3": "GIN",
+    "ISO_Numeric": 324
+  },
+  {
+    "ISO_A3": "GNB",
+    "ISO_Numeric": 624
+  },
+  {
+    "ISO_A3": "GUY",
+    "ISO_Numeric": 328
+  },
+  {
+    "ISO_A3": "HTI",
+    "ISO_Numeric": 332
+  },
+  {
+    "ISO_A3": "HMD",
+    "ISO_Numeric": 334
+  },
+  {
+    "ISO_A3": "VAT",
+    "ISO_Numeric": 336
+  },
+  {
+    "ISO_A3": "HND",
+    "ISO_Numeric": 340
+  },
+  {
+    "ISO_A3": "HKG",
+    "ISO_Numeric": 344
+  },
+  {
+    "ISO_A3": "HUN",
+    "ISO_Numeric": 348
+  },
+  {
+    "ISO_A3": "ISL",
+    "ISO_Numeric": 352
+  },
+  {
+    "ISO_A3": "IND",
+    "ISO_Numeric": 356
+  },
+  {
+    "ISO_A3": "IDN",
+    "ISO_Numeric": 360
+  },
+  {
+    "ISO_A3": "IRN",
+    "ISO_Numeric": 364
+  },
+  {
+    "ISO_A3": "IRQ",
+    "ISO_Numeric": 368
+  },
+  {
+    "ISO_A3": "IRL",
+    "ISO_Numeric": 372
+  },
+  {
+    "ISO_A3": "IMN",
+    "ISO_Numeric": 833
+  },
+  {
+    "ISO_A3": "ISR",
+    "ISO_Numeric": 376
+  },
+  {
+    "ISO_A3": "ITA",
+    "ISO_Numeric": 380
+  },
+  {
+    "ISO_A3": "JAM",
+    "ISO_Numeric": 388
+  },
+  {
+    "ISO_A3": "JPN",
+    "ISO_Numeric": 392
+  },
+  {
+    "ISO_A3": "JEY",
+    "ISO_Numeric": 832
+  },
+  {
+    "ISO_A3": "JOR",
+    "ISO_Numeric": 400
+  },
+  {
+    "ISO_A3": "KAZ",
+    "ISO_Numeric": 398
+  },
+  {
+    "ISO_A3": "KEN",
+    "ISO_Numeric": 404
+  },
+  {
+    "ISO_A3": "KIR",
+    "ISO_Numeric": 296
+  },
+  {
+    "ISO_A3": "KOR",
+    "ISO_Numeric": 410
+  },
+  {
+    "ISO_A3": "KWT",
+    "ISO_Numeric": 414
+  },
+  {
+    "ISO_A3": "KGZ",
+    "ISO_Numeric": 417
+  },
+  {
+    "ISO_A3": "LAO",
+    "ISO_Numeric": 418
+  },
+  {
+    "ISO_A3": "LVA",
+    "ISO_Numeric": 428
+  },
+  {
+    "ISO_A3": "LBN",
+    "ISO_Numeric": 422
+  },
+  {
+    "ISO_A3": "LSO",
+    "ISO_Numeric": 426
+  },
+  {
+    "ISO_A3": "LBR",
+    "ISO_Numeric": 430
+  },
+  {
+    "ISO_A3": "LBY",
+    "ISO_Numeric": 434
+  },
+  {
+    "ISO_A3": "LIE",
+    "ISO_Numeric": 438
+  },
+  {
+    "ISO_A3": "LTU",
+    "ISO_Numeric": 440
+  },
+  {
+    "ISO_A3": "LUX",
+    "ISO_Numeric": 442
+  },
+  {
+    "ISO_A3": "MAC",
+    "ISO_Numeric": 446
+  },
+  {
+    "ISO_A3": "MDG",
+    "ISO_Numeric": 450
+  },
+  {
+    "ISO_A3": "MWI",
+    "ISO_Numeric": 454
+  },
+  {
+    "ISO_A3": "MYS",
+    "ISO_Numeric": 458
+  },
+  {
+    "ISO_A3": "MDV",
+    "ISO_Numeric": 462
+  },
+  {
+    "ISO_A3": "MLI",
+    "ISO_Numeric": 466
+  },
+  {
+    "ISO_A3": "MLT",
+    "ISO_Numeric": 470
+  },
+  {
+    "ISO_A3": "MHL",
+    "ISO_Numeric": 584
+  },
+  {
+    "ISO_A3": "MTQ",
+    "ISO_Numeric": 474
+  },
+  {
+    "ISO_A3": "MRT",
+    "ISO_Numeric": 478
+  },
+  {
+    "ISO_A3": "MUS",
+    "ISO_Numeric": 480
+  },
+  {
+    "ISO_A3": "MYT",
+    "ISO_Numeric": 175
+  },
+  {
+    "ISO_A3": "MEX",
+    "ISO_Numeric": 484
+  },
+  {
+    "ISO_A3": "FSM",
+    "ISO_Numeric": 583
+  },
+  {
+    "ISO_A3": "MDA",
+    "ISO_Numeric": 498
+  },
+  {
+    "ISO_A3": "MCO",
+    "ISO_Numeric": 492
+  },
+  {
+    "ISO_A3": "MNG",
+    "ISO_Numeric": 496
+  },
+  {
+    "ISO_A3": "MNE",
+    "ISO_Numeric": 499
+  },
+  {
+    "ISO_A3": "MSR",
+    "ISO_Numeric": 500
+  },
+  {
+    "ISO_A3": "MAR",
+    "ISO_Numeric": 504
+  },
+  {
+    "ISO_A3": "MOZ",
+    "ISO_Numeric": 508
+  },
+  {
+    "ISO_A3": "MMR",
+    "ISO_Numeric": 104
+  },
+  {
+    "ISO_A3": "NAM",
+    "ISO_Numeric": 516
+  },
+  {
+    "ISO_A3": "NRU",
+    "ISO_Numeric": 520
+  },
+  {
+    "ISO_A3": "NPL",
+    "ISO_Numeric": 524
+  },
+  {
+    "ISO_A3": "NLD",
+    "ISO_Numeric": 528
+  },
+  {
+    "ISO_A3": "NCL",
+    "ISO_Numeric": 540
+  },
+  {
+    "ISO_A3": "NZL",
+    "ISO_Numeric": 554
+  },
+  {
+    "ISO_A3": "NIC",
+    "ISO_Numeric": 558
+  },
+  {
+    "ISO_A3": "NER",
+    "ISO_Numeric": 562
+  },
+  {
+    "ISO_A3": "NGA",
+    "ISO_Numeric": 566
+  },
+  {
+    "ISO_A3": "NIU",
+    "ISO_Numeric": 570
+  },
+  {
+    "ISO_A3": "NFK",
+    "ISO_Numeric": 574
+  },
+  {
+    "ISO_A3": "MNP",
+    "ISO_Numeric": 580
+  },
+  {
+    "ISO_A3": "NOR",
+    "ISO_Numeric": 578
+  },
+  {
+    "ISO_A3": "OMN",
+    "ISO_Numeric": 512
+  },
+  {
+    "ISO_A3": "PAK",
+    "ISO_Numeric": 586
+  },
+  {
+    "ISO_A3": "PLW",
+    "ISO_Numeric": 585
+  },
+  {
+    "ISO_A3": "PSE",
+    "ISO_Numeric": 275
+  },
+  {
+    "ISO_A3": "PAN",
+    "ISO_Numeric": 591
+  },
+  {
+    "ISO_A3": "PNG",
+    "ISO_Numeric": 598
+  },
+  {
+    "ISO_A3": "PRY",
+    "ISO_Numeric": 600
+  },
+  {
+    "ISO_A3": "PER",
+    "ISO_Numeric": 604
+  },
+  {
+    "ISO_A3": "PHL",
+    "ISO_Numeric": 608
+  },
+  {
+    "ISO_A3": "PCN",
+    "ISO_Numeric": 612
+  },
+  {
+    "ISO_A3": "POL",
+    "ISO_Numeric": 616
+  },
+  {
+    "ISO_A3": "PRT",
+    "ISO_Numeric": 620
+  },
+  {
+    "ISO_A3": "QAT",
+    "ISO_Numeric": 634
+  },
+  {
+    "ISO_A3": "MKD",
+    "ISO_Numeric": 807
+  },
+  {
+    "ISO_A3": "ROU",
+    "ISO_Numeric": 642
+  },
+  {
+    "ISO_A3": "RUS",
+    "ISO_Numeric": 643
+  },
+  {
+    "ISO_A3": "RWA",
+    "ISO_Numeric": 646
+  },
+  {
+    "ISO_A3": "REU",
+    "ISO_Numeric": 638
+  },
+  {
+    "ISO_A3": "BLM",
+    "ISO_Numeric": 652
+  },
+  {
+    "ISO_A3": "SHN",
+    "ISO_Numeric": 654
+  },
+  {
+    "ISO_A3": "KNA",
+    "ISO_Numeric": 659
+  },
+  {
+    "ISO_A3": "LCA",
+    "ISO_Numeric": 662
+  },
+  {
+    "ISO_A3": "MAF",
+    "ISO_Numeric": 663
+  },
+  {
+    "ISO_A3": "SPM",
+    "ISO_Numeric": 666
+  },
+  {
+    "ISO_A3": "VCT",
+    "ISO_Numeric": 670
+  },
+  {
+    "ISO_A3": "WSM",
+    "ISO_Numeric": 882
+  },
+  {
+    "ISO_A3": "SMR",
+    "ISO_Numeric": 674
+  },
+  {
+    "ISO_A3": "STP",
+    "ISO_Numeric": 678
+  },
+  {
+    "ISO_A3": "SAU",
+    "ISO_Numeric": 682
+  },
+  {
+    "ISO_A3": "SEN",
+    "ISO_Numeric": 686
+  },
+  {
+    "ISO_A3": "SRB",
+    "ISO_Numeric": 688
+  },
+  {
+    "ISO_A3": "SYC",
+    "ISO_Numeric": 690
+  },
+  {
+    "ISO_A3": "SLE",
+    "ISO_Numeric": 694
+  },
+  {
+    "ISO_A3": "SGP",
+    "ISO_Numeric": 702
+  },
+  {
+    "ISO_A3": "SXM",
+    "ISO_Numeric": 534
+  },
+  {
+    "ISO_A3": "SVK",
+    "ISO_Numeric": 703
+  },
+  {
+    "ISO_A3": "SVN",
+    "ISO_Numeric": 705
+  },
+  {
+    "ISO_A3": "SLB",
+    "ISO_Numeric": 90
+  },
+  {
+    "ISO_A3": "SOM",
+    "ISO_Numeric": 706
+  },
+  {
+    "ISO_A3": "ZAF",
+    "ISO_Numeric": 710
+  },
+  {
+    "ISO_A3": "SGS",
+    "ISO_Numeric": 239
+  },
+  {
+    "ISO_A3": "SSD",
+    "ISO_Numeric": 728
+  },
+  {
+    "ISO_A3": "ESP",
+    "ISO_Numeric": 724
+  },
+  {
+    "ISO_A3": "LKA",
+    "ISO_Numeric": 144
+  },
+  {
+    "ISO_A3": "SDN",
+    "ISO_Numeric": 729
+  },
+  {
+    "ISO_A3": "SUR",
+    "ISO_Numeric": 740
+  },
+  {
+    "ISO_A3": "SJM",
+    "ISO_Numeric": 744
+  },
+  {
+    "ISO_A3": "SWE",
+    "ISO_Numeric": 752
+  },
+  {
+    "ISO_A3": "CHE",
+    "ISO_Numeric": 756
+  },
+  {
+    "ISO_A3": "SYR",
+    "ISO_Numeric": 760
+  },
+  {
+    "ISO_A3": "TWN",
+    "ISO_Numeric": 158
+  },
+  {
+    "ISO_A3": "TJK",
+    "ISO_Numeric": 762
+  },
+  {
+    "ISO_A3": "TZA",
+    "ISO_Numeric": 834
+  },
+  {
+    "ISO_A3": "THA",
+    "ISO_Numeric": 764
+  },
+  {
+    "ISO_A3": "TLS",
+    "ISO_Numeric": 626
+  },
+  {
+    "ISO_A3": "TGO",
+    "ISO_Numeric": 768
+  },
+  {
+    "ISO_A3": "TKL",
+    "ISO_Numeric": 772
+  },
+  {
+    "ISO_A3": "TON",
+    "ISO_Numeric": 776
+  },
+  {
+    "ISO_A3": "TTO",
+    "ISO_Numeric": 780
+  },
+  {
+    "ISO_A3": "TUN",
+    "ISO_Numeric": 788
+  },
+  {
+    "ISO_A3": "TUR",
+    "ISO_Numeric": 792
+  },
+  {
+    "ISO_A3": "TKM",
+    "ISO_Numeric": 795
+  },
+  {
+    "ISO_A3": "TCA",
+    "ISO_Numeric": 796
+  },
+  {
+    "ISO_A3": "TUV",
+    "ISO_Numeric": 798
+  },
+  {
+    "ISO_A3": "UGA",
+    "ISO_Numeric": 800
+  },
+  {
+    "ISO_A3": "UKR",
+    "ISO_Numeric": 804
+  },
+  {
+    "ISO_A3": "ARE",
+    "ISO_Numeric": 784
+  },
+  {
+    "ISO_A3": "GBR",
+    "ISO_Numeric": 826
+  },
+  {
+    "ISO_A3": "UMI",
+    "ISO_Numeric": 581
+  },
+  {
+    "ISO_A3": "USA",
+    "ISO_Numeric": 840
+  },
+  {
+    "ISO_A3": "URY",
+    "ISO_Numeric": 858
+  },
+  {
+    "ISO_A3": "UZB",
+    "ISO_Numeric": 860
+  },
+  {
+    "ISO_A3": "VUT",
+    "ISO_Numeric": 548
+  },
+  {
+    "ISO_A3": "VEN",
+    "ISO_Numeric": 862
+  },
+  {
+    "ISO_A3": "VNM",
+    "ISO_Numeric": 704
+  },
+  {
+    "ISO_A3": "VGB",
+    "ISO_Numeric": 92
+  },
+  {
+    "ISO_A3": "VIR",
+    "ISO_Numeric": 850
+  },
+  {
+    "ISO_A3": "WLF",
+    "ISO_Numeric": 876
+  },
+  {
+    "ISO_A3": "YEM",
+    "ISO_Numeric": 887
+  },
+  {
+    "ISO_A3": "ZMB",
+    "ISO_Numeric": 894
+  },
+  {
+    "ISO_A3": "ZWE",
+    "ISO_Numeric": 716
+  },
+  {
+    "ISO_A3": "ALA",
+    "ISO_Numeric": 248
+  }
+ ]

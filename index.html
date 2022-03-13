@@ -17,7 +17,7 @@
     <!-- TopoJSON -->
     <script src="https://unpkg.com/topojson@3"></script>
     <!-- Custom JS and CSS -->
-    <script type="text/javascript" src="./js/main.js"></script>
+    <script type="module" src="./js/main.js"></script>
     <link href="./css/main.css" rel="stylesheet">
     <title>Covid 19 Dashboard</title>
 </head>
@@ -49,31 +49,24 @@
     </header>
 
     <div class="container-fluid bg-light">
-        <div class="row">
-            <div class="col-1 my-auto border border-primary">
-                dsf
+        <div class="body-row">
+            <div class="body-column">
+                World Map
+                <div id="map"></div>
             </div>
-            <div class="col-11">
-                <div class="row align-items-center">
-                    <div class="col">
-                        World Map
-                        <div id="map"></div>
-                    </div>
-                    <div class="col">
-                        Number of cases barchart daily
-                        <div id="daily-barchart"></div>
-                    </div>
-                </div>
-                <div class="row align-items-center">
-                    <div class="col-sm">
-                        Overview of cases (confirmed and active), death recoveries total
-                        <div id="overview-piechart"></div>
-                    </div>
-                    <div class="col-sm">
-                        Number of cases linegraph cumalative
-                        <div id="cumalative-linegraph"></div>
-                    </div>
-                </div>
+            <div class="body-column">
+                Number of cases linechart daily
+                <div id="daily-linechart"></div>
+            </div>
+        </div>
+        <div class="body-row">
+            <div class="body-column">
+                Overview of cases (confirmed and active), death recoveries total
+                <div id="overview-piechart"></div>
+            </div>
+            <div class="body-column">
+                Number of cases bargraph cumalative
+                <div id="cumalative-barchart"></div>
             </div>
         </div>
     </div>
