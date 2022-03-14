@@ -52,7 +52,7 @@ function getTotalCasesPerCountryLast2Weeks(owid_covid_data) {
         let country_data_array = country_data.data;
 
         // slice the country_data_array to the last 14 elements
-        let country_data_array_last_2_weeks = country_data_array.slice(country_data_array.length - 14, country_data_array.length);
+        let country_data_array_last_2_weeks = country_data_array.slice(country_data_array.length - 5, country_data_array.length);
 
         let new_cases_total = 0;
 

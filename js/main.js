@@ -97,7 +97,6 @@ function drawMap(data, htmlID) {
 
 
     let circle_data = getTotalCasesPerCountryLast2Weeks(owid_covid_data);
-    console.log(circle_data);
 
     // Add a scale for bubble size
     var circle_size = d3.scalePow()
@@ -121,7 +120,6 @@ function drawMap(data, htmlID) {
                         let country_data = circle_data.filter(function (d) {
                             return d.iso_a3 == country_ISO_A3;
                         })[0].data;
-                        console.log(circle_size(country_data));
                         return circle_size(country_data);
                     } catch (error) {
                         return 0
@@ -166,7 +164,7 @@ function updateLineGraph(flatData, htmlID) {
         .domain(d3.extent(flatData, d => { return parseTime(d.x_axis) }))
         .range([margin.left, xMax]);
     // bottom
-    svg.append("g")
+    let xAxis = svg.append("g")
         .attr("transform", "translate(0, " + yMax + ")")
         .attr("class", "axis")
         .call(d3.axisBottom(x)
@@ -174,7 +172,7 @@ function updateLineGraph(flatData, htmlID) {
         );
 
     let y = d3.scaleLinear()
-        .domain(d3.extent(flatData, d => { return d.y_axis }))
+        .domain([0, d3.max(flatData, d => { return d.y_axis })])
         .range([yMax, 0]);
     // left y axis
     svg.append("g")
@@ -182,9 +180,25 @@ function updateLineGraph(flatData, htmlID) {
         .attr("transform", "translate(" + margin.left + ", 0)")
         .call(d3.axisLeft(y));
 
+    // Add a clipPath: everything out of this area won't be drawn.
+    let clip = svg.append("defs").append("svg:clipPath")
+        .attr("id", "clip")
+        .append("svg:rect")
+        .attr("width", xMax)
+        .attr("height", yMax)
+        .attr("x", 0)
+        .attr("y", 0);
+
+    // Add brushing
+    let brush = d3.brushX()                   // Add the brush feature using the d3.brush function
+        .extent([[margin.left, 0], [xMax, yMax]])  // initialise the brush area: start at 0,0 and finishes at width,height: it means I select the whole graph area
+        .on("end", updateChart)               // Each time the brush selection changes, trigger the 'updateChart' function
+
+
     // Add the line
     // parse in an array of objects with x_axis and y_axis values
     let lines = svg.selectAll(".line")
+        .attr("clip-path", "url(#clip)")
         .data([flatData]);
 
     lines.join(
@@ -205,6 +219,46 @@ function updateLineGraph(flatData, htmlID) {
             .attr("opacity", 0)
             .remove()
     );
+
+    // Add the brushing
+    svg.append("g")
+        .attr("class", "brush")
+        .call(brush);
+
+    function updateChart(event, d) {
+
+        // console.log(x.invert(event.selection[0]));
+
+        // What are the selected boundaries?
+        let extent = event.selection
+
+
+        // If no selection, back to initial coordinate. Otherwise, update X axis domain
+        if (!extent) {
+            x.domain(d3.extent(flatData, d => { return parseTime(d.x_axis) }))
+        } else {
+            x.domain([x.invert(extent[0]), x.invert(extent[1])])
+            lines.select(".brush").call(brush.move, null) // This remove the grey brush area as soon as the selection has been done
+        }
+
+        // get new data based on date range so write function to extract data based on date range
+        // draw new data
+        // update other charts
+        
+
+        // Update axis and line position
+        xAxis.transition().duration(1000).call(d3.axisBottom(x))
+        lines
+            .select('.line')
+            .transition()
+            .duration(2000)
+            .attr("d", d3.area()
+                .x(function (d) { return x(parseTime(d.x_axis)); })
+                .y1(function (d) { return y(d.y_axis); })
+                .y0(y(0))
+            )
+    }
+
 }
 
 function drawBarChart(flatData, htmlID) {
@@ -247,7 +301,7 @@ function updateBarChart(flatData, htmlID) {
         .call(d3.axisBottom(x));
 
     let y = d3.scaleLinear()
-        .domain(d3.extent(flatData, d => { return d.value }))
+        .domain([0, d3.max(flatData, d => { return +d.value })])
         .range([yMax, 0]);
     // left y axis
     svg.append("g")
@@ -269,7 +323,9 @@ function updateBarChart(flatData, htmlID) {
             .attr("x", d => x(d.name))
             .attr("y", d => y(d.value))
             .attr("width", x.bandwidth())
-            .attr("height", d => yMax - y(d.value))
+            .attr("height", d => {
+                return yMax - y(d.value);
+            })
             .attr("fill", "steelblue"),
         update => update
             .transition()
