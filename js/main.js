@@ -1,5 +1,5 @@
 import { getCountryISOA3Code } from "./helper.js";
-import { getCases, getOverview } from "./data.js";
+import { getCases, getVaccinationOverview, getTotalCasesPerCountryLast2Weeks } from "./data.js";
 
 const mapboxAccessTokenLeaflet = "pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw";
 const parseTime = d3.timeParse("%Y-%m-%d");
@@ -91,9 +91,45 @@ function drawMap(data, htmlID) {
                     let country_ISO_A3 = getCountryISOA3Code(d3.select(this).attr('id'), iso_numeric_codes)
                     updateLineGraph(getCases(owid_covid_data, country_ISO_A3, 'date', 'new_cases_smoothed'), 'daily-linechart');
                     updateLineGraph(getCases(owid_covid_data, country_ISO_A3, 'date', 'total_cases'), "cumalative-barchart");
-                    updateBarChart(getOverview(owid_covid_data, country_ISO_A3), "overview-piechart");
+                    updateBarChart(getVaccinationOverview(owid_covid_data, country_ISO_A3), "overview-barchart");
                 })
         );
+
+
+    let circle_data = getTotalCasesPerCountryLast2Weeks(owid_covid_data);
+    console.log(circle_data);
+
+    // Add a scale for bubble size
+    var circle_size = d3.scalePow()
+        .domain(d3.extent(circle_data, d => { return d.data }))  // What's in the data
+        .range([4, 500])  // Size in pixel
+
+    // Draw the map bubbles
+    mapFeatures.selectAll("circle")
+        .attr("class", "map-bubble")
+        .data(data.features)
+        .join(
+            enter => enter.append("circle")
+                .attr("class", "map-bubble")
+                .attr("transform", function (d) {
+                    return "translate(" + path.centroid(d) + ")";
+                })
+                .attr("r", function (d) {
+                    try {
+                        let country_ISO_A3 = getCountryISOA3Code(d.id, iso_numeric_codes)
+                        // get .data from circle_data based on iso_a3
+                        let country_data = circle_data.filter(function (d) {
+                            return d.iso_a3 == country_ISO_A3;
+                        })[0].data;
+                        console.log(circle_size(country_data));
+                        return circle_size(country_data);
+                    } catch (error) {
+                        return 0
+                    }
+                })
+                .attr('pointer-events', 'none')
+        );
+
 
 }
 
@@ -189,8 +225,6 @@ function drawBarChart(flatData, htmlID) {
 
 function updateBarChart(flatData, htmlID) {
 
-    console.log(flatData);
-
     let height = chart_height - margin.top - margin.bottom;
     let width = chart_width - margin.left - margin.right;
 
@@ -264,13 +298,12 @@ window.addEventListener('load', function () {
         d3.json("data/owid-covid-data.json")
     ])
         .then(function ([topojson_data, iso_numeric, covid_data]) {
-            // console.log(covid_data);
             iso_numeric_codes = iso_numeric;
             owid_covid_data = covid_data;
             geoData = topojson.feature(topojson_data, topojson_data.objects.countries);
             drawMap(geoData, "map");
             drawLineChart(getCases(owid_covid_data, "OWID_WRL", 'date', 'new_cases_smoothed'), "daily-linechart");
             drawLineChart(getCases(owid_covid_data, "OWID_WRL", 'date', 'total_cases'), "cumalative-barchart");
-            drawBarChart(getOverview(owid_covid_data, "OWID_WRL"), "overview-piechart");
+            drawBarChart(getVaccinationOverview(owid_covid_data, "OWID_WRL"), "overview-barchart");
         });
 })

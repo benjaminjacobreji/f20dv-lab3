@@ -1,11 +1,11 @@
-.map{
-    background-color: lightblue
+.map {
+  background-color: lightblue;
 }
 
-.map-country{
-    fill: lightgreen;
-    stroke: black;
-    stroke-width: 0.5;
+.map-country {
+  fill: lightgreen;
+  stroke: black;
+  stroke-width: 0.5;
 }
 
 .map-country:hover {
@@ -16,31 +16,38 @@
 }
 
 .map-country-selected {
-    fill: gray;
-    stroke: red;
-    stroke-width: 3;
-    opacity: 0.5;
-  }
+  fill: gray;
+  stroke: red;
+  stroke-width: 3;
+  opacity: 0.5;
+}
 
-.body-column{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-    flex-grow: 1;
-    padding: 1em;
+.body-column {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  flex-grow: 1;
+  padding: 1em;
 }
 
 .body-row {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
 }
 
 .line {
-    fill: steelblue;
-    stroke: steelblue;
-    stroke-width: 1.5px;
-    opacity: 0.7;
+  fill: steelblue;
+  stroke: steelblue;
+  stroke-width: 1.5px;
+  opacity: 0.7;
+}
+
+.map-bubble {
+  fill: lightgray;
+  stroke: steelblue;
+  stroke-width: 1px;
+  opacity: 0.7;
 }
