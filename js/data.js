@@ -1,3 +1,5 @@
+const parseTime = d3.timeParse("%Y-%m-%d");
+
 function getCases(owid_covid_data, country, x_axis, y_axis) {
     let records = owid_covid_data[country].data;
 
@@ -79,4 +81,38 @@ function getTotalCasesPerCountryLast2Weeks(owid_covid_data) {
     return new_cases_per_country;
 }
 
-export { getCases, getVaccinationOverview, getTotalCasesPerCountryLast2Weeks };
+// function to get data in between two dates
+function getDataBetweenDates(flatData, start_date, end_date) {
+
+    let data_between_dates = new Array();
+
+    for (const day in flatData) {
+        let day_date = parseTime(flatData[day].x_axis);
+        
+        if (day_date.getTime() >= start_date.getTime() && day_date.getTime() <= end_date.getTime()) {
+            data_between_dates.push(flatData[day]);
+        }
+    }
+
+    return data_between_dates;
+
+    // let data_between_dates = new Array();
+
+    // let country_data = owid_covid_data[country];
+
+    // let country_data_array = country_data.data;
+
+    // for (const day in country_data_array) {
+    //     let day_date = parseTime(country_data_array[day].x_axis);
+
+    //     if (day_date.getTime() >= start_date.getTime() && day_date.getTime() <= end_date.getTime()) {
+    //         data_between_dates.push(country_data_array[day][column]);
+    //     }
+    // }
+
+    // return data_between_dates;
+
+    
+}
+
+export { getCases, getVaccinationOverview, getTotalCasesPerCountryLast2Weeks, getDataBetweenDates };

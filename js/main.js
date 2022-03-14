@@ -1,5 +1,5 @@
 import { getCountryISOA3Code } from "./helper.js";
-import { getCases, getVaccinationOverview, getTotalCasesPerCountryLast2Weeks } from "./data.js";
+import { getCases, getVaccinationOverview, getTotalCasesPerCountryLast2Weeks, getDataBetweenDates } from "./data.js";
 
 const mapboxAccessTokenLeaflet = "pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw";
 const parseTime = d3.timeParse("%Y-%m-%d");
@@ -60,8 +60,8 @@ function drawMap(data, htmlID) {
                 return;
             } else {
                 map_dispatcher.call('unselectAll');
-                updateLineGraph(getCases(owid_covid_data, "OWID_WRL", 'date', 'new_cases_smoothed'), 'daily-linechart');
-                updateLineGraph(getCases(owid_covid_data, "OWID_WRL", 'date', 'total_cases'), "cumalative-barchart");
+                updateLineGraph(getCases(owid_covid_data, "OWID_WRL", 'date', 'new_cases_smoothed'), 'daily-linechart', "OWID_WRL");
+                updateLineGraph(getCases(owid_covid_data, "OWID_WRL", 'date', 'total_cases'), "cumalative-barchart", "OWID_WRL");
             }
         })
         .call(zoom);
@@ -89,8 +89,8 @@ function drawMap(data, htmlID) {
                     d3.selectAll(".map-country").classed("map-country-selected", false);
                     d3.select(this).classed("map-country-selected", true);
                     let country_ISO_A3 = getCountryISOA3Code(d3.select(this).attr('id'), iso_numeric_codes)
-                    updateLineGraph(getCases(owid_covid_data, country_ISO_A3, 'date', 'new_cases_smoothed'), 'daily-linechart');
-                    updateLineGraph(getCases(owid_covid_data, country_ISO_A3, 'date', 'total_cases'), "cumalative-barchart");
+                    updateLineGraph(getCases(owid_covid_data, country_ISO_A3, 'date', 'new_cases_smoothed'), 'daily-linechart', country_ISO_A3);
+                    updateLineGraph(getCases(owid_covid_data, country_ISO_A3, 'date', 'total_cases'), "cumalative-barchart", country_ISO_A3);
                     updateBarChart(getVaccinationOverview(owid_covid_data, country_ISO_A3), "overview-barchart");
                 })
         );
@@ -131,7 +131,7 @@ function drawMap(data, htmlID) {
 
 }
 
-function drawLineChart(flatData, htmlID) {
+function drawLineChart(flatData, htmlID, country) {
 
     // flatData = flatData.slice(1, 700);
 
@@ -146,10 +146,10 @@ function drawLineChart(flatData, htmlID) {
     svg.append("g")
         .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-    updateLineGraph(flatData, htmlID);
+    updateLineGraph(flatData, htmlID, country);
 }
 
-function updateLineGraph(flatData, htmlID) {
+function updateLineGraph(flatData, htmlID, country) {
 
     let xMax = chart_width - margin.left - margin.right;
     let yMax = chart_height - margin.top - margin.bottom;
@@ -186,7 +186,7 @@ function updateLineGraph(flatData, htmlID) {
         .append("svg:rect")
         .attr("width", xMax)
         .attr("height", yMax)
-        .attr("x", 0)
+        .attr("x", 50)
         .attr("y", 0);
 
     // Add brushing
@@ -198,8 +198,8 @@ function updateLineGraph(flatData, htmlID) {
     // Add the line
     // parse in an array of objects with x_axis and y_axis values
     let lines = svg.selectAll(".line")
-        .attr("clip-path", "url(#clip)")
-        .data([flatData]);
+        .data([flatData])
+        .attr("clip-path", "url(#clip)");
 
     lines.join(
         enter => enter.append("path")
@@ -220,43 +220,74 @@ function updateLineGraph(flatData, htmlID) {
             .remove()
     );
 
+    svg.on("dblclick", function () {
+        svg.selectAll(".brush").remove();
+        // svg.selectAll(".line").remove();
+        svg.selectAll(".axis").remove();
+        updateLineGraph(flatData, htmlID);
+    });
+
     // Add the brushing
     svg.append("g")
         .attr("class", "brush")
         .call(brush);
 
-    function updateChart(event, d) {
+    function updateChart(event) {
 
         // console.log(x.invert(event.selection[0]));
 
         // What are the selected boundaries?
         let extent = event.selection
 
+        let startDate = x.invert(extent[0]);
+        let endDate = x.invert(extent[1]);
 
         // If no selection, back to initial coordinate. Otherwise, update X axis domain
         if (!extent) {
             x.domain(d3.extent(flatData, d => { return parseTime(d.x_axis) }))
         } else {
-            x.domain([x.invert(extent[0]), x.invert(extent[1])])
+            x.domain([startDate, endDate]);
             lines.select(".brush").call(brush.move, null) // This remove the grey brush area as soon as the selection has been done
         }
 
         // get new data based on date range so write function to extract data based on date range
         // draw new data
         // update other charts
-        
 
         // Update axis and line position
         xAxis.transition().duration(1000).call(d3.axisBottom(x))
-        lines
-            .select('.line')
-            .transition()
-            .duration(2000)
-            .attr("d", d3.area()
-                .x(function (d) { return x(parseTime(d.x_axis)); })
-                .y1(function (d) { return y(d.y_axis); })
-                .y0(y(0))
-            )
+
+        if (htmlID == "cumalative-barchart") {
+            let totalFlatData = getCases(owid_covid_data, country, 'date', 'new_cases_smoothed');
+            let newFlatData = getDataBetweenDates(totalFlatData, startDate, endDate);
+            updateLineGraph(newFlatData, "daily-linechart", country);
+        }
+
+        if (htmlID == "daily-linechart") {
+
+            let totalFlatData = getCases(owid_covid_data, country, 'date', 'total_cases');
+            let newFlatData = getDataBetweenDates(totalFlatData, startDate, endDate);
+            updateLineGraph(newFlatData, "cumalative-barchart", country);
+        }
+
+
+        lines.join(
+            enter => enter.select(".line")
+                .merge(lines)
+                .transition()
+                .duration(2000)
+                .attr("d", d3.area()
+                    .x(function (d) { return x(parseTime(d.x_axis)); })
+                    .y1(function (d) { return y(d.y_axis); })
+                    .y0(y(0))
+                ),
+            update => update,
+            exit => exit
+                .transition()
+                .duration(2000)
+                .attr("opacity", 0)
+                .remove()
+        );
     }
 
 }
@@ -358,8 +389,8 @@ window.addEventListener('load', function () {
             owid_covid_data = covid_data;
             geoData = topojson.feature(topojson_data, topojson_data.objects.countries);
             drawMap(geoData, "map");
-            drawLineChart(getCases(owid_covid_data, "OWID_WRL", 'date', 'new_cases_smoothed'), "daily-linechart");
-            drawLineChart(getCases(owid_covid_data, "OWID_WRL", 'date', 'total_cases'), "cumalative-barchart");
+            drawLineChart(getCases(owid_covid_data, "OWID_WRL", 'date', 'new_cases_smoothed'), "daily-linechart", 'OWID_WRL');
+            drawLineChart(getCases(owid_covid_data, "OWID_WRL", 'date', 'total_cases'), "cumalative-barchart", 'OWID_WRL');
             drawBarChart(getVaccinationOverview(owid_covid_data, "OWID_WRL"), "overview-barchart");
         });
 })
