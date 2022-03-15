@@ -130,4 +130,37 @@ function getNewCasesForCountries(owid_covid_data, countries) {
     return new_cases_per_country;
 }
 
-export { getCases, getVaccinationOverview, getTotalCasesPerCountryLast2Weeks, getDataBetweenDates, getNewCasesForCountries };
+function getTotalCasesForCountries(owid_covid_data, countries) {
+    let new_cases_per_country = new Array();
+
+    for (const country in countries) {
+
+        let iso_code = countries[country];
+        let country_data = owid_covid_data[iso_code];
+        let country_data_name = country_data.location;
+        let country_data_array = country_data.data;
+
+        for (const day in country_data_array) {
+            let day_data = country_data_array[day];
+            let day_date = day_data.date;
+            let new_cases = day_data.total_cases;
+
+            // check if new_cases is NaN
+            if (isNaN(new_cases)) {
+                new_cases = 0;
+            }
+
+            let new_cases_per_country_entry = {
+                'iso_a3': iso_code,
+                'name': country_data_name,
+                'date': day_date,
+                'data': new_cases
+            };
+
+            new_cases_per_country.push(new_cases_per_country_entry);
+        }
+    }
+    return new_cases_per_country;
+}
+
+export { getCases, getVaccinationOverview, getTotalCasesPerCountryLast2Weeks, getDataBetweenDates, getNewCasesForCountries, getTotalCasesForCountries };
