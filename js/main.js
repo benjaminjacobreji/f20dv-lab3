@@ -1,5 +1,5 @@
 import { getCountryISOA3Code } from "./helper.js";
-import { getCases, getVaccinationOverview, getTotalCasesPerCountryLast2Weeks, getDataBetweenDates } from "./data.js";
+import { getCases, getVaccinationOverview, getTotalCasesPerCountryLast2Weeks, getDataBetweenDates, getNewCasesForCountries } from "./data.js";
 
 const mapboxAccessTokenLeaflet = "pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw";
 const parseTime = d3.timeParse("%Y-%m-%d");
@@ -60,8 +60,8 @@ function drawMap(data, htmlID) {
                 return;
             } else {
                 map_dispatcher.call('unselectAll');
-                updateLineGraph(getCases(owid_covid_data, "OWID_WRL", 'date', 'new_cases_smoothed'), 'daily-linechart', "OWID_WRL");
-                updateLineGraph(getCases(owid_covid_data, "OWID_WRL", 'date', 'total_cases'), "cumalative-barchart", "OWID_WRL");
+                updateAreaChart(getCases(owid_covid_data, "OWID_WRL", 'date', 'new_cases_smoothed'), 'daily-linechart', "OWID_WRL");
+                updateAreaChart(getCases(owid_covid_data, "OWID_WRL", 'date', 'total_cases'), "cumalative-barchart", "OWID_WRL");
             }
         })
         .call(zoom);
@@ -89,8 +89,8 @@ function drawMap(data, htmlID) {
                     d3.selectAll(".map-country").classed("map-country-selected", false);
                     d3.select(this).classed("map-country-selected", true);
                     let country_ISO_A3 = getCountryISOA3Code(d3.select(this).attr('id'), iso_numeric_codes)
-                    updateLineGraph(getCases(owid_covid_data, country_ISO_A3, 'date', 'new_cases_smoothed'), 'daily-linechart', country_ISO_A3);
-                    updateLineGraph(getCases(owid_covid_data, country_ISO_A3, 'date', 'total_cases'), "cumalative-barchart", country_ISO_A3);
+                    updateAreaChart(getCases(owid_covid_data, country_ISO_A3, 'date', 'new_cases_smoothed'), 'daily-linechart', country_ISO_A3);
+                    updateAreaChart(getCases(owid_covid_data, country_ISO_A3, 'date', 'total_cases'), "cumalative-barchart", country_ISO_A3);
                     updateBarChart(getVaccinationOverview(owid_covid_data, country_ISO_A3), "overview-barchart");
                 })
         );
@@ -131,7 +131,7 @@ function drawMap(data, htmlID) {
 
 }
 
-function drawLineChart(flatData, htmlID, country) {
+function drawAreaChart(flatData, htmlID, country) {
 
     // flatData = flatData.slice(1, 700);
 
@@ -146,10 +146,10 @@ function drawLineChart(flatData, htmlID, country) {
     svg.append("g")
         .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-    updateLineGraph(flatData, htmlID, country);
+    updateAreaChart(flatData, htmlID, country);
 }
 
-function updateLineGraph(flatData, htmlID, country) {
+function updateAreaChart(flatData, htmlID, country) {
 
     let xMax = chart_width - margin.left - margin.right;
     let yMax = chart_height - margin.top - margin.bottom;
@@ -224,7 +224,7 @@ function updateLineGraph(flatData, htmlID, country) {
         svg.selectAll(".brush").remove();
         // svg.selectAll(".line").remove();
         svg.selectAll(".axis").remove();
-        updateLineGraph(flatData, htmlID);
+        updateAreaChart(flatData, htmlID);
     });
 
     // Add the brushing
@@ -233,8 +233,6 @@ function updateLineGraph(flatData, htmlID, country) {
         .call(brush);
 
     function updateChart(event) {
-
-        // console.log(x.invert(event.selection[0]));
 
         // What are the selected boundaries?
         let extent = event.selection
@@ -260,14 +258,14 @@ function updateLineGraph(flatData, htmlID, country) {
         if (htmlID == "cumalative-barchart") {
             let totalFlatData = getCases(owid_covid_data, country, 'date', 'new_cases_smoothed');
             let newFlatData = getDataBetweenDates(totalFlatData, startDate, endDate);
-            updateLineGraph(newFlatData, "daily-linechart", country);
+            updateAreaChart(newFlatData, "daily-linechart", country);
         }
 
         if (htmlID == "daily-linechart") {
 
             let totalFlatData = getCases(owid_covid_data, country, 'date', 'total_cases');
             let newFlatData = getDataBetweenDates(totalFlatData, startDate, endDate);
-            updateLineGraph(newFlatData, "cumalative-barchart", country);
+            updateAreaChart(newFlatData, "cumalative-barchart", country);
         }
 
 
@@ -375,6 +373,169 @@ function updateBarChart(flatData, htmlID) {
 
 }
 
+function drawLineGraph(data, htmlID) {
+
+    let height = chart_height - margin.top - margin.bottom;
+    let width = chart_width - margin.left - margin.right;
+
+    let svg = d3.select("#" + htmlID)
+        .append("svg")
+        .attr("width", chart_width)
+        .attr("height", chart_height)
+
+    svg.append("g")
+        .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+    if (htmlID === 'query-1') {
+        animateEvolution(data, htmlID);
+    }
+    else {
+        updateLineGraph(data, htmlID);
+    }
+}
+
+function incrementDate(dateInput, increment) {
+    var dateFormatTotime = new Date(dateInput);
+    var increasedDate = new Date(dateFormatTotime.getTime() + (increment * 86400000));
+    return increasedDate;
+}
+
+
+// function to filter data based on date range
+// function to get data in between two dates
+function getEvolutionDataBetweenDates(flatData, start_date, end_date) {
+
+    let data_between_dates = new Array();
+
+    for (const day in flatData) {
+
+        let day_date = parseTime(flatData[day].date);
+        if (day_date.getTime() >= start_date.getTime() && day_date.getTime() <= end_date.getTime()) {
+            data_between_dates.push(flatData[day]);
+        }
+    }
+
+    return data_between_dates;
+}
+
+
+function animateEvolution(data, htmlID) {
+
+    let startDate = d3.min(data, d => parseTime(d.date));
+    let endDate = d3.max(data, d => parseTime(d.date));
+
+    let diffTime = Math.abs(endDate - startDate);
+    let diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+
+    function doSetTimeout(i) {
+        setTimeout(function () {
+            let renderDate = incrementDate(startDate, i);
+            updateLineGraph(getEvolutionDataBetweenDates(data, startDate, renderDate), htmlID);
+        }, i * 10);
+    }
+
+
+
+    for (let renderDateIncrement = 1; renderDateIncrement < diffDays; renderDateIncrement++) {
+        doSetTimeout(renderDateIncrement);
+    }
+}
+
+function updateLineGraph(data, htmlID) {
+
+    let height = chart_height - margin.top - margin.bottom;
+    let width = chart_width - margin.left - margin.right;
+
+    let xMax = chart_width - margin.left - margin.right;
+    let yMax = chart_height - margin.top - margin.bottom;
+
+    let svg = d3.select("#" + htmlID).selectAll("svg");
+
+    svg.selectAll(".axis").remove();
+    svg.selectAll(".mylines").remove();
+    svg.selectAll(".mydots").remove();
+    svg.selectAll(".mylabels").remove();
+
+    let sumstat = d3.group(data, d => d.name);
+
+    // X Axis
+    let x = d3.scaleTime()
+        .domain(d3.extent(data, d => { return parseTime(d.date) }))
+        .range([margin.left, xMax]);
+    // bottom
+    let xAxis = svg.append("g")
+        .attr("transform", "translate(0, " + yMax + ")")
+        .attr("class", "axis")
+        .call(d3.axisBottom(x)
+            .tickFormat(d3.timeFormat("%b %y"))
+        );
+
+    let y = d3.scaleLinear()
+        .domain([0, d3.max(data, d => { return d.data })])
+        .range([yMax, 0]);
+    // left y axis
+    svg.append("g")
+        .attr("class", "axis")
+        .attr("transform", "translate(" + margin.left + ", 0)")
+        .call(d3.axisLeft(y));
+
+    // color palette
+    const color = d3.scaleOrdinal()
+        .range(['#e41a1c', '#377eb8', '#4daf4a', '#984ea3', '#ff7f00', '#ffff33', '#a65628', '#f781bf', '#999999'])
+
+    // Add one dot in the legend for each name.
+    var size = 20
+    svg.selectAll("mydots")
+        .data(sumstat)
+        .enter()
+        .append("rect")
+        .attr('class', 'mydots')
+        .attr("x", 100)
+        .attr("y", function (d, i) { return 100 + i * (size + 5) }) // 100 is where the first dot appears. 25 is the distance between dots
+        .attr("width", size)
+        .attr("height", size)
+        .style("fill", function (d) { return color(d) })
+
+    // Add one dot in the legend for each name.
+    svg.selectAll("mylabels")
+        .data(sumstat)
+        .enter()
+        .append("text")
+        .attr('class', 'mylabels')
+        .attr("x", 100 + size * 1.2)
+        .attr("y", function (d, i) { return 100 + i * (size + 5) + (size / 2) }) // 100 is where the first dot appears. 25 is the distance between dots
+        .style("fill", function (d) { return color(d) })
+        .text(function (d) { return d[0] })
+        .attr("text-anchor", "left")
+        .style("alignment-baseline", "middle")
+
+    // Add the line
+    let line = d3.line()
+        .x(function (d) { return x(parseTime(d.date)); })
+        .y(function (d) { return y(d.data); });
+
+    let lines = svg.selectAll(".line")
+        .data(sumstat)
+        .join("path")
+        .attr("fill", "none")
+        .attr('class', 'mylines')
+        .attr("stroke", function (d) { return color(d[0]) })
+        .attr("stroke-width", 1.5)
+        .attr("d", function (d) {
+            return d3.line()
+                .x(function (d) { return x(parseTime(d.date)); })
+                .y(function (d) { return y(+d.data); })
+                (d[1])
+        });
+
+    // exit
+    lines.exit()
+        .transition()
+        .duration(1000)
+        .attr("stroke-width", 0)
+        .remove();
+}
+
 window.addEventListener('load', function () {
     // fetch files and return both as seperate data
     // topojson file from https://unpkg.com/world-atlas@2.0.2/countries-110m.json
@@ -389,8 +550,9 @@ window.addEventListener('load', function () {
             owid_covid_data = covid_data;
             geoData = topojson.feature(topojson_data, topojson_data.objects.countries);
             drawMap(geoData, "map");
-            drawLineChart(getCases(owid_covid_data, "OWID_WRL", 'date', 'new_cases_smoothed'), "daily-linechart", 'OWID_WRL');
-            drawLineChart(getCases(owid_covid_data, "OWID_WRL", 'date', 'total_cases'), "cumalative-barchart", 'OWID_WRL');
+            drawAreaChart(getCases(owid_covid_data, "OWID_WRL", 'date', 'new_cases_smoothed'), "daily-linechart", 'OWID_WRL');
+            drawAreaChart(getCases(owid_covid_data, "OWID_WRL", 'date', 'total_cases'), "cumalative-barchart", 'OWID_WRL');
             drawBarChart(getVaccinationOverview(owid_covid_data, "OWID_WRL"), "overview-barchart");
+            drawLineGraph(getNewCasesForCountries(owid_covid_data, ['OWID_EUR', 'OWID_ASI', 'OWID_AFR', 'OWID_NAM', 'OWID_SAM', 'OWID_OCE']), "query-1");
         });
 })
