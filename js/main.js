@@ -1,17 +1,20 @@
 import { getCountryISOA3Code } from "./helper.js";
-import { getCases, getVaccinationOverview, getTotalCasesPerCountryLast2Weeks, getDataBetweenDates, getNewCasesForCountries, getTotalCasesForCountries } from "./data.js";
+import { getCases, getVaccinationOverview, getTotalCasesPerCountryLast5Days, getDataBetweenDates, getNewCasesForCountries, getTotalCasesForCountries, getVaccinationEffect, getDataBetweenDatesForVaccinationOverview } from "./data.js";
 
-const mapboxAccessTokenLeaflet = "pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw";
+// used to parse time from the dataset
 const parseTime = d3.timeParse("%Y-%m-%d");
 
 const map_width = 900;
 const map_height = 400;
 
+// dimensions for charts used in dashboard
 const chart_width = 900;
 const chart_height = 400;
 
+// margins values to used for the charts
 const margin = { top: 20, right: 20, bottom: 30, left: 60 };
 
+// map zoom
 const map_minzoom = 1;
 const map_maxzoom = 10;
 
@@ -20,6 +23,8 @@ let owid_covid_data;
 let geoData;
 
 
+
+// function to draw and render the map layout
 function drawMap(data, htmlID) {
 
     // Define map projection
@@ -96,7 +101,7 @@ function drawMap(data, htmlID) {
         );
 
 
-    let circle_data = getTotalCasesPerCountryLast2Weeks(owid_covid_data);
+    let circle_data = getTotalCasesPerCountryLast5Days(owid_covid_data);
 
     // Add a scale for bubble size
     var circle_size = d3.scalePow()
@@ -131,6 +136,7 @@ function drawMap(data, htmlID) {
 
 }
 
+// function to place the area chart for the dashboard
 function drawAreaChart(flatData, htmlID, country) {
 
     // flatData = flatData.slice(1, 700);
@@ -138,6 +144,7 @@ function drawAreaChart(flatData, htmlID, country) {
     let height = chart_height - margin.top - margin.bottom;
     let width = chart_width - margin.left - margin.right;
 
+    // define the svg
     let svg = d3.select("#" + htmlID)
         .append("svg")
         .attr("width", chart_width)
@@ -145,12 +152,15 @@ function drawAreaChart(flatData, htmlID, country) {
 
     svg.append("g")
         .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
+    
+    // call the update function to render the chart
     updateAreaChart(flatData, htmlID, country);
 }
 
+// function to update the area charts on the dashboard
 function updateAreaChart(flatData, htmlID, country) {
 
+    // compute the area chart dimensions
     let xMax = chart_width - margin.left - margin.right;
     let yMax = chart_height - margin.top - margin.bottom;
 
@@ -204,7 +214,7 @@ function updateAreaChart(flatData, htmlID, country) {
     lines.join(
         enter => enter.append("path")
             .attr("class", "line")
-            .merge(lines)
+            .merge(lines) // magic
             .transition()
             .duration(2000)
             .attr("d", d3.area()
@@ -259,6 +269,9 @@ function updateAreaChart(flatData, htmlID, country) {
             let totalFlatData = getCases(owid_covid_data, country, 'date', 'new_cases_smoothed');
             let newFlatData = getDataBetweenDates(totalFlatData, startDate, endDate);
             updateAreaChart(newFlatData, "daily-linechart", country);
+            let barchartData = getDataBetweenDatesForVaccinationOverview(owid_covid_data, country, startDate, endDate);
+            updateBarChart(barchartData, "overview-barchart");
+
         }
 
         if (htmlID == "daily-linechart") {
@@ -266,6 +279,8 @@ function updateAreaChart(flatData, htmlID, country) {
             let totalFlatData = getCases(owid_covid_data, country, 'date', 'total_cases');
             let newFlatData = getDataBetweenDates(totalFlatData, startDate, endDate);
             updateAreaChart(newFlatData, "cumalative-barchart", country);
+            let barchartData = getDataBetweenDatesForVaccinationOverview(owid_covid_data, country, startDate, endDate);
+            updateBarChart(barchartData, "overview-barchart");
         }
 
 
@@ -290,6 +305,7 @@ function updateAreaChart(flatData, htmlID, country) {
 
 }
 
+// function to dar the bar chart on the overview page
 function drawBarChart(flatData, htmlID) {
 
     let height = chart_height - margin.top - margin.bottom;
@@ -303,9 +319,11 @@ function drawBarChart(flatData, htmlID) {
     svg.append("g")
         .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
+    // call the update function to render the chart
     updateBarChart(flatData, htmlID);
 }
 
+// function to render the bar chart on the overview page
 function updateBarChart(flatData, htmlID) {
 
     let height = chart_height - margin.top - margin.bottom;
@@ -373,6 +391,7 @@ function updateBarChart(flatData, htmlID) {
 
 }
 
+// function to place the line graphs for queries
 function drawLineGraph(data, htmlID) {
 
     let height = chart_height - margin.top - margin.bottom;
@@ -386,17 +405,25 @@ function drawLineGraph(data, htmlID) {
     svg.append("g")
         .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
+        // based on the query, pass the appropriate data to the animation function
     if (htmlID === 'query-1') {
         animateEvolution(data, htmlID, 100);
     }
     else if (htmlID === 'query-4') {
-        animateEvolution(data, htmlID, 50);
+        animateEvolution(data, htmlID, 100);
+    }
+    else if (htmlID === 'query-2') {
+        animateEvolution(data, htmlID, 100);
+    }
+    else if (htmlID === 'query-3') {
+        animateEvolution2(data, htmlID, 100);
     }
     else {
         updateLineGraph(data, htmlID);
     }
 }
 
+// simple helper function to increment the date for animation
 function incrementDate(dateInput, increment) {
     var dateFormatTotime = new Date(dateInput);
     var increasedDate = new Date(dateFormatTotime.getTime() + (increment * 86400000));
@@ -420,6 +447,7 @@ function getEvolutionDataBetweenDates(flatData, start_date, end_date) {
     return data_between_dates;
 }
 
+// function to animate the evolution to show the spread and progress of the covid pandemic
 function animateEvolution(data, htmlID, timeout) {
 
     let startDate = d3.min(data, d => parseTime(d.date));
@@ -428,6 +456,7 @@ function animateEvolution(data, htmlID, timeout) {
     let diffTime = Math.abs(endDate - startDate);
     let diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
 
+    // function to call updateLineGraph for each day with a timeout
     function doSetTimeout(i) {
         setTimeout(function () {
             let renderDate = incrementDate(startDate, i);
@@ -435,13 +464,37 @@ function animateEvolution(data, htmlID, timeout) {
         }, i * timeout);
     }
 
+    // loop to call doSetTimeout for each day effectively animating
     for (let renderDateIncrement = 1; renderDateIncrement < diffDays; renderDateIncrement++) {
         doSetTimeout(renderDateIncrement);
     }
 }
 
-function updateLineGraph(data, htmlID) {
+// clone function to accomodate a different data structure for query 3
+function animateEvolution2(data, htmlID, timeout) {
 
+    let startDate = d3.min(data, d => parseTime(d.date));
+    let endDate = d3.max(data, d => parseTime(d.date));
+
+    let diffTime = Math.abs(endDate - startDate);
+    let diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+
+    // function to call updateLineGraph for each day with a timeout
+    function doSetTimeout(i) {
+        setTimeout(function () {
+            let renderDate = incrementDate(startDate, i);
+            updateLineGraph2(getEvolutionDataBetweenDates(data, startDate, renderDate), htmlID);
+        }, i * timeout);
+    }
+
+    // loop to call doSetTimeout for each day effectively animating
+    for (let renderDateIncrement = 1; renderDateIncrement < diffDays; renderDateIncrement++) {
+        doSetTimeout(renderDateIncrement);
+    }
+}
+
+// function to update the line graph with the new data and render the new data
+function updateLineGraph(data, htmlID) {
     let height = chart_height - margin.top - margin.bottom;
     let width = chart_width - margin.left - margin.right;
 
@@ -535,6 +588,103 @@ function updateLineGraph(data, htmlID) {
         .remove();
 }
 
+// clone function to update the line graph with the new data and render the new data for query 3
+function updateLineGraph2(data, htmlID) {
+
+    let height = chart_height - margin.top - margin.bottom;
+    let width = chart_width - margin.left - margin.right;
+
+    let xMax = chart_width - margin.left - margin.right;
+    let yMax = chart_height - margin.top - margin.bottom;
+
+    let svg = d3.select("#" + htmlID).selectAll("svg");
+
+    svg.selectAll(".axis").remove();
+    svg.selectAll(".mylines").remove();
+    svg.selectAll(".mydots").remove();
+    svg.selectAll(".mylabels").remove();
+
+    let sumstat = d3.group(data, d => d.type);
+
+    // X Axis
+    let x = d3.scaleTime()
+        .domain(d3.extent(data, d => { return parseTime(d.date) }))
+        .range([margin.left, xMax]);
+    // bottom
+    let xAxis = svg.append("g")
+        .attr("transform", "translate(0, " + yMax + ")")
+        .attr("class", "axis")
+        .call(d3.axisBottom(x)
+            .tickFormat(d3.timeFormat("%b %y"))
+        );
+
+    let y = d3.scaleLinear()
+        .domain([0, d3.max(data, d => { return d.data })])
+        .range([yMax, 0]);
+    // left y axis
+    svg.append("g")
+        .attr("class", "axis")
+        .attr("transform", "translate(" + margin.left + ", 0)")
+        .call(d3.axisLeft(y));
+
+    // color palette
+    const color = d3.scaleOrdinal()
+        .range(['#e41a1c', '#377eb8', '#4daf4a', '#984ea3', '#ff7f00', '#8B8000', '#a65628', '#f781bf', '#999999'])
+
+    // Add one dot in the legend for each name.
+    var size = 20
+    svg.selectAll("mydots")
+        .data(sumstat)
+        .enter()
+        .append("rect")
+        .attr('class', 'mydots')
+        .attr("x", 100)
+        .attr("y", function (d, i) { return 100 + i * (size + 5) }) // 100 is where the first dot appears. 25 is the distance between dots
+        .attr("width", size)
+        .attr("height", size)
+        .style("fill", function (d) { return color(d[0]) })
+
+    // Add one dot in the legend for each name.
+    svg.selectAll("mylabels")
+        .data(sumstat)
+        .enter()
+        .append("text")
+        .attr('class', 'mylabels')
+        .attr("x", 100 + size * 1.2)
+        .attr("y", function (d, i) { return 100 + i * (size + 5) + (size / 2) }) // 100 is where the first dot appears. 25 is the distance between dots
+        .style("fill", function (d) { return color(d[0]) })
+        .text(function (d) { return d[0] })
+        .attr("text-anchor", "left")
+        .style("alignment-baseline", "middle")
+
+    // Add the line
+    let line = d3.line()
+        .x(function (d) { return x(parseTime(d.date)); })
+        .y(function (d) { return y(d.data); });
+
+    let lines = svg.selectAll(".line")
+        .data(sumstat)
+        .join("path")
+        .attr("fill", "none")
+        .attr('class', 'mylines')
+        .attr("stroke", function (d) { return color(d[0]) })
+        .attr("stroke-width", 1.5)
+        .attr("d", function (d) {
+            return d3.line()
+                .x(function (d) { return x(parseTime(d.date)); })
+                .y(function (d) { return y(+d.data); })
+                (d[1])
+        });
+
+    // exit
+    lines.exit()
+        .transition()
+        .duration(1000)
+        .attr("stroke-width", 0)
+        .remove();
+}
+
+// load everything after page load
 window.addEventListener('load', function () {
     // fetch files and return both as seperate data
     // topojson file from https://unpkg.com/world-atlas@2.0.2/countries-110m.json
@@ -542,8 +692,9 @@ window.addEventListener('load', function () {
     Promise.all([
         d3.json("https://unpkg.com/world-atlas@2.0.2/countries-110m.json"),
         d3.json("data/iso_numeric_codes.json"),
-        d3.json("data/owid-covid-data.json")
+        d3.json("https://covid.ourworldindata.org/data/owid-covid-data.json")
     ])
+    // only run functions after data is loaded
         .then(function ([topojson_data, iso_numeric, covid_data]) {
             iso_numeric_codes = iso_numeric;
             owid_covid_data = covid_data;
@@ -555,5 +706,7 @@ window.addEventListener('load', function () {
             drawLineGraph(getNewCasesForCountries(owid_covid_data, ['IRL', 'ARE', 'IND', 'USA', 'ARG', 'FRA']), "query-1");
             // drawLineGraph(getNewCasesForCountries(owid_covid_data, ['OWID_EUR', 'OWID_ASI', 'OWID_AFR', 'OWID_NAM', 'OWID_SAM', 'OWID_OCE']), "query-1");
             drawLineGraph(getTotalCasesForCountries(owid_covid_data, ['OWID_EUR', 'OWID_ASI', 'OWID_AFR', 'OWID_NAM', 'OWID_SAM', 'OWID_OCE']), "query-4");
+            drawLineGraph(getNewCasesForCountries(owid_covid_data, ['OWID_HIC', 'OWID_UMC', 'OWID_LMC', 'OWID_LIC']), "query-2");
+            drawLineGraph(getVaccinationEffect(owid_covid_data, "OWID_WRL"), "query-3");
         });
 })
